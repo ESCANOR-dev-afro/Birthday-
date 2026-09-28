@@ -11,6 +11,7 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onCelebrate, celebrationCount }) => {
   const [photoAdmirers, setPhotoAdmirers] = useState(52);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   // 3D Tilt Spring Physics (gracefully damped for mobile touch)
   const mouseX = useMotionValue(0);
@@ -120,26 +121,48 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onCelebrate, celebrati
             whileTap={{ scale: 0.97 }}
             className="frame-asymmetric p-2 xs:p-2.5 sm:p-3 relative cursor-pointer group transition-shadow duration-500 touch-manipulation"
           >
-            {/* Image Inner Container with Hairline Crimson/Copper Inset */}
+            {/* Image Inner Container with Hairline Crimson/Copper Inset & Skeleton Placeholder */}
             <div className="relative aspect-[4/5] w-full rounded-[1.75rem_0.5rem_1.75rem_0.5rem] xs:rounded-[2rem_0.5rem_2rem_0.5rem] sm:rounded-[2.25rem_0.5rem_2.25rem_0.5rem] overflow-hidden bg-espresso-950 ring-1 ring-crimson-500/40">
-              <img
-                src="/image1.png"
-                alt="Deborah"
-                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                loading="eager"
-              />
+              
+              {/* Sleek Skeleton Pulse State */}
+              {!isImageLoaded && (
+                <div className="absolute inset-0 bg-gradient-to-tr from-crimson-950/80 via-espresso-900 to-mahogany-900 animate-pulse flex flex-col items-center justify-center space-y-2 z-0">
+                  <div className="w-8 h-8 rounded-full bg-crimson-800/40 border border-copper-400/30 flex items-center justify-center animate-spin">
+                    <Sparkles className="w-4 h-4 text-copper-300" />
+                  </div>
+                  <span className="text-[9px] font-mono tracking-widest text-copper-300/70 uppercase">
+                    Unveiling Portrait...
+                  </span>
+                </div>
+              )}
+
+              {/* Multi-format High Performance Picture */}
+              <picture className="w-full h-full block relative z-1">
+                <source srcSet="/image1.webp" type="image/webp" />
+                <source srcSet="/image1.jpg" type="image/jpeg" />
+                <img
+                  src="/image1.png"
+                  alt="Deborah"
+                  className={`w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-105 ${
+                    isImageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                  }`}
+                  loading="eager"
+                  decoding="async"
+                  onLoad={() => setIsImageLoaded(true)}
+                />
+              </picture>
 
               {/* Sophisticated Editorial Velvet Vignette */}
-              <div className="absolute inset-0 bg-gradient-to-t from-espresso-950/80 via-transparent to-espresso-950/15 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-espresso-950/80 via-transparent to-espresso-950/15 pointer-events-none z-2" />
 
               {/* Understated Status Badge */}
-              <div className="absolute top-2 right-2 xs:top-2.5 xs:right-2.5 sm:top-3 sm:right-3 px-2 xs:px-2.5 py-1 rounded-full bg-espresso-950/85 backdrop-blur-md border border-crimson-500/40 text-[10px] text-cream-100 flex items-center gap-1.5 shadow-sm min-h-[30px]">
+              <div className="absolute top-2 right-2 xs:top-2.5 xs:right-2.5 sm:top-3 sm:right-3 px-2 xs:px-2.5 py-1 rounded-full bg-espresso-950/85 backdrop-blur-md border border-crimson-500/40 text-[10px] text-cream-100 flex items-center gap-1.5 shadow-sm min-h-[30px] z-3">
                 <Heart className="w-3 h-3 text-crimson-400 fill-crimson-400" />
                 <span className="font-mono text-xs text-copper-200">{photoAdmirers}</span>
               </div>
 
               {/* Bottom Caption Pill */}
-              <div className="absolute bottom-2.5 left-2.5 right-2.5 xs:bottom-3 xs:left-3 xs:right-3 sm:bottom-3.5 sm:left-3.5 sm:right-3.5 flex items-center justify-between text-left">
+              <div className="absolute bottom-2.5 left-2.5 right-2.5 xs:bottom-3 xs:left-3 xs:right-3 sm:bottom-3.5 sm:left-3.5 sm:right-3.5 flex items-center justify-between text-left z-3">
                 <div>
                   <span className="text-[8px] sm:text-[9px] font-mono tracking-widest text-copper-400 uppercase block">
                     MY HONOREE
