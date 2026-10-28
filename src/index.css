@@ -4,12 +4,14 @@
 
 @layer base {
   :root {
-    --bg-main: #140a08;
-    --text-primary: #faf5ef;
-    --text-muted: #ede0d0;
-    --accent-crimson: #be123c;
-    --accent-copper: #e07a5f;
-    --accent-mahogany: #2d1714;
+    --bg-main: #0B0D13;
+    --text-primary: #f8f8fc;
+    --text-muted: #d8b4fe;
+    --accent-violet: #a855f7;
+    --accent-lavender: #c084fc;
+    --accent-gold: #f59e0b;
+    --accent-champagne: #fde047;
+    --glass-border: rgba(168, 85, 247, 0.18);
     --sat: env(safe-area-inset-top, 0px);
     --sab: env(safe-area-inset-bottom, 0px);
     --sal: env(safe-area-inset-left, 0px);
@@ -24,141 +26,155 @@
   html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-x: clip;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   body {
-    background-color: #140a08;
-    color: #faf5ef;
+    background-color: #0B0D13;
+    color: #f8f8fc;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-image: 
-      /* Warm top light spotlight */
-      radial-gradient(ellipse 90% 50% at 50% -10%, rgba(190, 18, 60, 0.22), transparent 70%),
-      /* Soft copper right ambient glow */
-      radial-gradient(circle at 90% 35%, rgba(224, 122, 95, 0.15), transparent 55%),
-      /* Deep crimson left ambient glow */
-      radial-gradient(circle at 10% 70%, rgba(136, 19, 55, 0.18), transparent 60%),
-      /* Rich espresso base overlay */
-      linear-gradient(180deg, #140a08 0%, #1c0f0d 50%, #120807 100%);
+    background-image:
+      /* Soft violet top spotlight */
+      radial-gradient(ellipse 80% 45% at 50% -5%, rgba(168, 85, 247, 0.28), transparent 65%),
+      /* Warm gold right accent */
+      radial-gradient(circle at 85% 30%, rgba(245, 158, 11, 0.12), transparent 50%),
+      /* Deep violet left bloom */
+      radial-gradient(circle at 12% 68%, rgba(124, 58, 237, 0.16), transparent 55%),
+      /* Obsidian base */
+      linear-gradient(180deg, #0B0D13 0%, #0e1018 45%, #111420 100%);
     background-attachment: fixed;
     overflow-x: hidden;
+    overflow-x: clip;
     width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 }
 
 @layer utilities {
-  /* Tactile Gift Box / Digital Invitation Card Shell */
+  .pb-safe {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+  }
+  .pt-safe {
+    padding-top: max(1rem, env(safe-area-inset-top, 0px));
+  }
+  /* === GLASS CARD: Main Invitation Shell === */
   .card-invitation {
-    background-color: #1e0f0c;
-    background: linear-gradient(175deg, rgba(37, 19, 16, 0.94) 0%, rgba(20, 10, 8, 0.98) 100%);
+    background: linear-gradient(160deg, rgba(21,24,40,0.94) 0%, rgba(11,13,19,0.98) 100%);
     backdrop-filter: blur(28px);
     -webkit-backdrop-filter: blur(28px);
-    border: 1px solid rgba(224, 122, 95, 0.32);
-    box-shadow: 
+    border: 1px solid rgba(168, 85, 247, 0.22);
+    box-shadow:
       0 30px 70px -15px rgba(0, 0, 0, 0.92),
-      0 0 40px -10px rgba(190, 18, 60, 0.2),
-      inset 0 1px 0 rgba(255, 235, 220, 0.2),
-      inset 0 0 35px rgba(190, 18, 60, 0.08);
+      0 0 40px -10px rgba(168, 85, 247, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      inset 0 0 30px rgba(168, 85, 247, 0.04);
   }
 
-  /* Tactile Wooden Memoir Folio Card with Copper Inlay */
+  /* === GLASS CARD: Memoir / Content Cards === */
   .card-memoir {
-    background-color: #23110e;
-    background: linear-gradient(145deg, rgba(45, 23, 20, 0.9) 0%, rgba(24, 12, 10, 0.95) 100%);
-    border: 1px solid rgba(224, 122, 95, 0.25);
-    box-shadow: 
+    background: linear-gradient(145deg, rgba(28, 33, 54, 0.88) 0%, rgba(17, 20, 32, 0.94) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(168, 85, 247, 0.18);
+    box-shadow:
       0 15px 35px -10px rgba(0, 0, 0, 0.8),
-      inset 0 1px 0 rgba(244, 194, 171, 0.18);
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
 
   .card-memoir-active {
-    background-color: #2d1410;
-    background: linear-gradient(155deg, rgba(58, 26, 22, 0.95) 0%, rgba(26, 11, 14, 0.98) 100%);
-    border: 1px solid rgba(225, 29, 72, 0.55);
-    box-shadow: 
+    background: linear-gradient(155deg, rgba(36, 41, 68, 0.96) 0%, rgba(17, 20, 32, 0.98) 100%);
+    border: 1px solid rgba(168, 85, 247, 0.50);
+    box-shadow:
       0 20px 45px -10px rgba(0, 0, 0, 0.9),
-      0 0 30px rgba(190, 18, 60, 0.28),
-      inset 0 1px 0 rgba(255, 230, 215, 0.25),
-      inset 0 0 20px rgba(224, 122, 95, 0.1);
+      0 0 35px rgba(168, 85, 247, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 0 20px rgba(168, 85, 247, 0.06);
   }
 
-  /* Sophisticated Softly Glowing Crimson Red Portrait Frame */
-  .frame-asymmetric {
-    border-radius: 3rem 0.85rem 3rem 0.85rem;
-    background-color: #281014;
-    background: linear-gradient(135deg, rgba(65, 24, 30, 0.7) 0%, rgba(25, 11, 13, 0.9) 100%);
-    border: 1.5px solid rgba(225, 29, 72, 0.5);
-    box-shadow: 
+  /* === PORTRAIT FRAME === */
+  .frame-hero {
+    border-radius: 2.5rem 0.75rem 2.5rem 0.75rem;
+    background: linear-gradient(135deg, rgba(36,41,68,0.7) 0%, rgba(17,20,32,0.9) 100%);
+    border: 1.5px solid rgba(168, 85, 247, 0.5);
+    box-shadow:
       0 25px 55px -12px rgba(0, 0, 0, 0.85),
-      0 0 45px -5px rgba(190, 18, 60, 0.35),
-      0 0 20px rgba(224, 122, 95, 0.25),
-      inset 0 0 20px rgba(190, 18, 60, 0.2);
+      0 0 50px -5px rgba(168, 85, 247, 0.4),
+      0 0 20px rgba(192, 132, 252, 0.25),
+      inset 0 0 20px rgba(168, 85, 247, 0.15);
   }
 
-  /* Haute Couture Brushed Copper Metallic Text */
-  .text-foil {
-    color: #f4c2ab;
+  /* === GRADIENT TEXT UTILITIES === */
+  .text-violet-foil {
     background: linear-gradient(
       135deg,
-      #fdfbf7 0%,
-      #f4c2ab 30%,
-      #e07a5f 60%,
-      #c85a38 85%,
-      #faf5ef 100%
+      #fefefe 0%,
+      #e9d5ff 25%,
+      #c084fc 55%,
+      #a855f7 80%,
+      #fde047 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  .text-copper-glow {
-    color: #fae2d5;
-    background: linear-gradient(
-      135deg,
-      #ffffff 0%,
-      #fae2d5 25%,
-      #f0a282 50%,
-      #e07a5f 75%,
-      #c85a38 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 12px rgba(224, 122, 95, 0.35));
-  }
-
-  .text-crimson-foil {
-    color: #fda4af;
-    background: linear-gradient(
-      135deg,
-      #ffffff 0%,
-      #fda4af 30%,
-      #e11d48 65%,
-      #be123c 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .text-editorial-shimmer {
-    color: #f4c2ab;
+  .text-gold-shimmer {
     background: linear-gradient(
       90deg,
-      #f4c2ab 0%,
-      #ffffff 35%,
-      #e07a5f 70%,
-      #f4c2ab 100%
+      #fde047 0%,
+      #ffffff 30%,
+      #fbbf24 60%,
+      #f59e0b 100%
     );
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 7s ease-in-out infinite;
+  }
+
+  .text-lavender-glow {
+    background: linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #e9d5ff 25%,
+      #c084fc 55%,
+      #a855f7 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.4));
+  }
+
+  .text-editorial-shimmer {
+    background: linear-gradient(
+      90deg,
+      #c084fc 0%,
+      #ffffff 35%,
+      #fde047 65%,
+      #c084fc 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     animation: shimmer 8s ease-in-out infinite;
   }
 
-  /* Dual Hairline Accent Line in Copper */
+  /* === DIVIDER LINES === */
   .hairline-dual {
     position: relative;
   }
-  .hairline-dual::before, .hairline-dual::after {
+  .hairline-dual::before,
+  .hairline-dual::after {
     content: '';
     position: absolute;
     left: 0;
@@ -167,57 +183,76 @@
   }
   .hairline-dual::before {
     top: 0;
-    background: linear-gradient(90deg, transparent, rgba(224, 122, 95, 0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.4), transparent);
   }
   .hairline-dual::after {
     bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(190, 18, 60, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.3), transparent);
   }
 
-  /* Subtle Texture Overlay */
+  /* === NOISE / TEXTURE === */
   .noise-bg {
-    background-image: radial-gradient(rgba(244, 194, 171, 0.04) 1px, transparent 0);
+    background-image: radial-gradient(rgba(168, 85, 247, 0.04) 1px, transparent 0);
     background-size: 28px 28px;
   }
 
-  /* Glass panel utilities for modern UI components */
+  /* === GLASS PANEL UTILITIES === */
   .glass-panel {
-    background-color: #231210;
-    background: rgba(35, 18, 16, 0.75);
+    background: rgba(21, 24, 40, 0.78);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(224, 122, 95, 0.2);
+    border: 1px solid rgba(168, 85, 247, 0.2);
   }
 
   .glass-panel-subtle {
-    background-color: #2d1714;
-    background: rgba(45, 23, 20, 0.6);
+    background: rgba(17, 20, 32, 0.65);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(224, 122, 95, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.12);
   }
 
   .glass-panel-gold {
-    background-color: #2d1714;
-    background: linear-gradient(160deg, rgba(45, 23, 20, 0.85) 0%, rgba(25, 11, 13, 0.95) 100%);
+    background: linear-gradient(160deg, rgba(28, 33, 54, 0.88) 0%, rgba(17, 20, 32, 0.96) 100%);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(224, 122, 95, 0.3);
+    border: 1px solid rgba(245, 158, 11, 0.28);
+  }
+
+  /* === BADGE / PILL === */
+  .badge-nursing {
+    background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(192,132,252,0.1));
+    border: 1px solid rgba(168,85,247,0.4);
+    backdrop-filter: blur(8px);
+  }
+
+  .badge-gold {
+    background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(253,224,71,0.1));
+    border: 1px solid rgba(245,158,11,0.4);
+    backdrop-filter: blur(8px);
   }
 }
 
-/* Luxury Warm Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+/* === ANIMATED GLOW BORDER === */
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(168, 85, 247, 0.5); box-shadow: 0 0 20px rgba(168,85,247,0.3); }
+  50%       { border-color: rgba(245, 158, 11, 0.6); box-shadow: 0 0 35px rgba(245,158,11,0.4), 0 0 60px rgba(168,85,247,0.25); }
 }
-::-webkit-scrollbar-track {
-  background: #140a08;
+.border-glow-animated {
+  animation: borderGlow 4s ease-in-out infinite;
 }
+
+/* === LUXURY SCROLLBAR === */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0B0D13; }
 ::-webkit-scrollbar-thumb {
-  background: #3d1f1b;
+  background: #4c1d95;
   border-radius: 9999px;
-  border: 1px solid rgba(224, 122, 95, 0.25);
+  border: 1px solid rgba(168, 85, 247, 0.25);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #be123c;
+::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+
+/* === SHIMMER KEYFRAME (needed for CSS utility) === */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
 }

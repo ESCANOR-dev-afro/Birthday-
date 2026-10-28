@@ -28,7 +28,7 @@ export const AmbientBackground: React.FC = () => {
 
     window.addEventListener('resize', handleResize, { passive: true });
 
-    // Warm, intimate particles: Brushed Copper, Deep Crimson Velvet, Warm Amber, Cream Ivory
+    // Lavender · Violet · Gold · Pearl particle palette
     interface Particle {
       x: number;
       y: number;
@@ -43,25 +43,26 @@ export const AmbientBackground: React.FC = () => {
     }
 
     const particleTypes = [
-      { color: 'rgba(224, 122, 95, ', glow: 'rgba(224, 122, 95, 0.4)' },   // Brushed Copper
-      { color: 'rgba(225, 29, 72, ', glow: 'rgba(225, 29, 72, 0.5)' },    // Crimson Red
-      { color: 'rgba(245, 158, 11, ', glow: 'rgba(245, 158, 11, 0.35)' },  // Warm Amber
-      { color: 'rgba(250, 245, 239, ', glow: 'rgba(250, 245, 239, 0.25)' },// Warm Ivory
-      { color: 'rgba(244, 194, 171, ', glow: 'rgba(244, 194, 171, 0.35)' },// Soft Terracotta
+      { color: 'rgba(192, 132, 252, ', glow: 'rgba(192, 132, 252, 0.45)' }, // Soft Lavender
+      { color: 'rgba(168, 85, 247, ',  glow: 'rgba(168, 85, 247, 0.5)'  }, // Electric Violet
+      { color: 'rgba(245, 158, 11, ',  glow: 'rgba(245, 158, 11, 0.4)'  }, // Candlelight Gold
+      { color: 'rgba(253, 224, 71, ',  glow: 'rgba(253, 224, 71, 0.3)'  }, // Champagne Yellow
+      { color: 'rgba(248, 248, 252, ', glow: 'rgba(248, 248, 252, 0.2)' }, // Pearl White
+      { color: 'rgba(124, 58, 237, ',  glow: 'rgba(124, 58, 237, 0.35)' }, // Deep Violet
     ];
 
-    // Reduced to 24 particles for silky 60fps on low-end mobile devices
-    const particles: Particle[] = Array.from({ length: 24 }, () => {
+    // 28 particles — silky 60fps on low-end mobile
+    const particles: Particle[] = Array.from({ length: 28 }, () => {
       const type = particleTypes[Math.floor(Math.random() * particleTypes.length)];
       return {
         x: Math.random() * width,
         y: Math.random() * height,
-        radius: Math.random() * 1.8 + 0.8,
-        vx: (Math.random() - 0.5) * 0.2,
-        vy: -Math.random() * 0.3 - 0.08,
+        radius: Math.random() * 1.9 + 0.7,
+        vx: (Math.random() - 0.5) * 0.18,
+        vy: -Math.random() * 0.28 - 0.07,
         alpha: Math.random() * 0.5 + 0.1,
-        maxAlpha: Math.random() * 0.7 + 0.2,
-        fadeSpeed: (Math.random() * 0.006) + 0.002,
+        maxAlpha: Math.random() * 0.75 + 0.2,
+        fadeSpeed: Math.random() * 0.006 + 0.002,
         color: type.color,
         glowColor: type.glow,
       };
@@ -113,26 +114,29 @@ export const AmbientBackground: React.FC = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* Deep atmospheric ambient velvet lights */}
-      <div className="absolute -top-[15%] left-1/2 -translate-x-1/2 w-[750px] h-[550px] rounded-full bg-crimson-600/18 blur-[140px] animate-pulse pointer-events-none" />
-      <div className="absolute top-[30%] -right-[15%] w-[550px] h-[550px] rounded-full bg-copper-500/15 blur-[150px] pointer-events-none" />
-      <div className="absolute top-[60%] -left-[15%] w-[500px] h-[500px] rounded-full bg-crimson-800/20 blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-[5%] right-1/4 w-[400px] h-[400px] rounded-full bg-copper-600/12 blur-[120px] pointer-events-none" />
+      {/* Deep atmospheric violet top bloom */}
+      <div className="absolute -top-[15%] left-1/2 -translate-x-1/2 w-[800px] h-[580px] rounded-full bg-violet-700/20 blur-[150px] animate-pulse pointer-events-none" />
+      {/* Gold right accent orb */}
+      <div className="absolute top-[28%] -right-[12%] w-[500px] h-[500px] rounded-full bg-gold-500/10 blur-[140px] pointer-events-none" />
+      {/* Deep violet left bloom */}
+      <div className="absolute top-[58%] -left-[12%] w-[480px] h-[480px] rounded-full bg-violet-800/18 blur-[130px] pointer-events-none" />
+      {/* Champagne bottom center shimmer */}
+      <div className="absolute bottom-[8%] right-1/4 w-[380px] h-[380px] rounded-full bg-gold-400/8 blur-[110px] pointer-events-none" />
 
-      {/* Subtle traditional Ankara fold rhythmic geometric overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.035] pointer-events-none mix-blend-overlay"
+      {/* Subtle dot-grid texture overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay"
         style={{
-          backgroundImage: `radial-gradient(circle at 25px 25px, #e07a5f 2%, transparent 0%), radial-gradient(circle at 75px 75px, #be123c 2%, transparent 0%)`,
-          backgroundSize: '100px 100px'
+          backgroundImage: `radial-gradient(circle at 20px 20px, #c084fc 1.5%, transparent 0%), radial-gradient(circle at 70px 70px, #f59e0b 1.5%, transparent 0%)`,
+          backgroundSize: '90px 90px',
         }}
       />
 
-      {/* Floating Canvas Dust / Starlets */}
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-75 pointer-events-none" />
+      {/* Floating canvas starlets */}
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-80 pointer-events-none" />
 
-      {/* Subtle Warm Noise Texture */}
-      <div className="absolute inset-0 noise-bg opacity-30 pointer-events-none" />
+      {/* Noise texture */}
+      <div className="absolute inset-0 noise-bg opacity-25 pointer-events-none" />
     </div>
   );
 };

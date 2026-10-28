@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Feather } from 'lucide-react';
+import { ChevronDown, BookOpen } from 'lucide-react';
 import { soundFx } from '../utils/audio';
 import { triggerSparkleBurst } from '../utils/confetti';
 
@@ -21,34 +21,37 @@ const MEMOIRS: MemoirItem[] = [
     id: 'note-today',
     number: '01',
     category: 'FROM MY HEART',
-    title: 'A Note for My Special One ✨',
-    preview: 'Thinking of you today and always. Your strength and grace are my greatest inspiration...',
-    leadParagraph: 'Thinking of you today and always. Your strength and grace are my greatest inspiration.',
-    bodyParagraph: 'From the very first moment our paths crossed, I knew there was something exceptionally rare about you. You bring such effortless light, warmth, and peace into my world. In every season, watching you walk with such poise, quiet strength, and genuine heart reminds me how blessed I am to have you in my corner.',
-    closingLine: 'Always proud of the woman you are, my darling.',
-    sealDate: 'ALWAYS & FOREVER',
+    title: 'To Semilore, On Your Special Day',
+    preview: 'Semilore, I\'m really glad to celebrate another year of your life with you today...',
+    leadParagraph: 'Happy Birthday to one of the most genuine and hardworking people I know.',
+    bodyParagraph:
+      'Semilore, I\'m really glad to celebrate another year of your life with you today. Having you as a close friend has been a blessing. You put your heart into everything you do, you stay true to yourself, and you bring positive energy wherever you go. I hope this new age brings you peace of mind, big wins, and all the happiness you truly deserve.',
+    closingLine: 'Always rooting for you',
+    sealDate: 'ALWAYS ROOTING FOR YOU',
   },
   {
-    id: 'why-iconic',
+    id: 'nursing-tribute',
     number: '02',
-    category: 'PURE ROYALTY',
-    title: "Why You're Truly Iconic",
-    preview: "From the day I met you, I knew you were special. You light up every room you enter, nwunye 'm...",
-    leadParagraph: "From the day I met you, I knew you were special. You light up every room you enter, nwunye 'm...",
-    bodyParagraph: 'You are the complete definition of elegance meets substance. Your infectious laughter, your sharp intellect, your unmatched style, and that pure heart of yours—everything about you is magnetic. You don’t even have to try; you simply command respect, warmth, and love wherever you step.',
-    closingLine: 'An undeniable Queen in every sense of the word.',
-    sealDate: 'TIMELESS BEAUTY',
+    category: 'BRIGHT FUTURE',
+    title: 'A Bright Future Ahead',
+    preview: 'You have such a kind heart and a calm way of handling challenges...',
+    leadParagraph: 'Whatever you set your mind to do, you always give it your best.',
+    bodyParagraph:
+      'You have such a kind heart and a calm way of handling challenges. That’s why I have no doubt that you are going to make a truly great nurse and excel at everything you put your hands to. The journey takes hard work, but you\'ve shown time and time again that you have what it takes.',
+    closingLine: 'Destined for great things',
+    sealDate: 'DESTINED FOR GREAT THINGS',
   },
   {
     id: 'birthday-wish',
     number: '03',
-    category: 'MY PRAYER & BLESSING',
-    title: 'My Wish for You This Year',
-    preview: 'My prayer for you this new age is that joy, peace, and overflowing blessings locate you...',
-    leadParagraph: 'My prayer for you this new age is that joy, peace, and overflowing blessings locate you. Shine on, beautiful!',
-    bodyParagraph: 'I pray that every single door you knock on opens wide for you. May your heart find absolute serenity, your laughter remain loud and carefree, and every silent prayer you whisper be answered in ways greater than you imagined. You deserve only the finest things this life has to offer.',
-    closingLine: 'Shine on endlessly, my fine girl.',
-    sealDate: 'HEARTFELT BLESSING',
+    category: 'BIRTHDAY WISHES',
+    title: 'My Wish For Your New Year',
+    preview: 'I pray that this new age opens great doors for you...',
+    leadParagraph: 'May this new chapter be your easiest, most peaceful, and happiest year yet.',
+    bodyParagraph:
+      'I pray that this new age opens great doors for you. May your hard work pay off, may stress be far from you, and may you always find reasons to smile and laugh. Enjoy your day to the fullest, eat good food, and celebrate yourself because you\'ve truly earned it.',
+    closingLine: 'Happy Birthday, Semilore',
+    sealDate: 'HAPPY BIRTHDAY, SEMILORE',
   },
 ];
 
@@ -63,27 +66,30 @@ export const MemoirCards: React.FC = () => {
     if (nextState) {
       soundFx.playSparkleChime();
       const rect = e.currentTarget.getBoundingClientRect();
-      triggerSparkleBurst((rect.left + rect.width / 2) / window.innerWidth, (rect.top + rect.height / 2) / window.innerHeight);
+      triggerSparkleBurst(
+        (rect.left + rect.width / 2) / window.innerWidth,
+        (rect.top + rect.height / 2) / window.innerHeight
+      );
     }
   };
 
   return (
     <section className="py-6 sm:py-10 px-2 xs:px-3 sm:px-4 max-w-md mx-auto">
-      {/* Section Tag & Editorial Header */}
+      {/* Section Header */}
       <div className="text-center mb-5 sm:mb-7 space-y-1.5 xs:space-y-2">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mahogany-900/90 border border-copper-500/30 text-[9px] xs:text-[10px] font-mono tracking-[0.2em] xs:tracking-[0.25em] text-copper-300 uppercase shadow-sm">
-          <Feather className="w-3 h-3 text-crimson-400" />
-          <span>Intimate Reflections</span>
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-obsidian-900/90 border border-violet-500/30 text-[9px] xs:text-[10px] font-mono tracking-[0.2em] xs:tracking-[0.25em] text-lavender-400 uppercase shadow-sm">
+          <BookOpen className="w-3 h-3 text-violet-400" />
+          <span>From My Heart</span>
         </div>
-        <h2 className="font-editorial text-2xl xs:text-3xl sm:text-4xl font-normal text-copper-glow leading-tight">
-          Words from My Heart
+        <h2 className="font-editorial text-2xl xs:text-3xl sm:text-4xl font-normal text-lavender-glow leading-tight">
+          From My Heart
         </h2>
-        <p className="text-xs text-copper-200/80 font-sans max-w-xs mx-auto font-light leading-relaxed">
-          Tap each folio below to unseal personal reflections and wishes straight from me to you, nwunye 'm.
+        <p className="text-xs text-lavender-300/80 font-sans max-w-xs mx-auto font-light leading-relaxed">
+          Tap each card to read a personal birthday message written for you, Semilore.
         </p>
       </div>
 
-      {/* Accordion Tactile Mahogany Folio Cards */}
+      {/* Accordion Folio Cards */}
       <div className="space-y-2.5 xs:space-y-3 sm:space-y-4">
         {MEMOIRS.map((memoir) => {
           const isExpanded = expandedId === memoir.id;
@@ -96,30 +102,30 @@ export const MemoirCards: React.FC = () => {
               className={`rounded-2xl sm:rounded-3xl border transition-all duration-300 overflow-hidden cursor-pointer touch-manipulation select-none active:scale-[0.99] ${
                 isExpanded
                   ? 'card-memoir-active'
-                  : 'card-memoir hover:border-copper-400/40'
+                  : 'card-memoir hover:border-violet-400/40'
               }`}
               onClick={(e) => toggleCard(memoir.id, e)}
             >
-              {/* Header Bar with Min Touch Height 48px */}
+              {/* Header Bar */}
               <div className="p-3.5 xs:p-4.5 sm:p-6 flex items-start justify-between gap-2.5 sm:gap-3 min-h-[52px]">
                 <div className="flex items-start gap-2.5 xs:gap-3 sm:gap-3.5 min-w-0">
-                  {/* Traditional bead / copper coin shaped index */}
+                  {/* Number Badge */}
                   <div className={`w-7 h-7 xs:w-8 xs:h-8 rounded-full flex items-center justify-center font-mono text-xs transition-colors shadow-inner shrink-0 ${
                     isExpanded
-                      ? 'bg-crimson-600/30 text-copper-200 border border-crimson-500/60'
-                      : 'bg-mahogany-800 text-copper-400 border border-copper-500/20'
+                      ? 'bg-violet-600/30 text-lavender-200 border border-violet-500/60'
+                      : 'bg-obsidian-800 text-lavender-400 border border-violet-500/20'
                   }`}>
                     {memoir.number}
                   </div>
                   <div className="min-w-0">
-                    <span className="text-[8px] xs:text-[9px] font-mono tracking-[0.2em] text-copper-400 uppercase block mb-0.5 font-medium">
+                    <span className="text-[8px] xs:text-[9px] font-mono tracking-[0.2em] text-gold-400 uppercase block mb-0.5 font-medium">
                       {memoir.category}
                     </span>
-                    <h3 className="font-serif text-sm xs:text-base sm:text-lg font-medium text-cream-100 leading-snug">
+                    <h3 className="font-serif text-sm xs:text-base sm:text-lg font-medium text-pearl-100 leading-snug">
                       {memoir.title}
                     </h3>
                     {!isExpanded && (
-                      <p className="text-[10px] xs:text-[11px] text-copper-200/70 font-sans mt-0.5 line-clamp-1 font-light">
+                      <p className="text-[10px] xs:text-[11px] text-lavender-300/70 font-sans mt-0.5 line-clamp-1 font-light">
                         {memoir.preview}
                       </p>
                     )}
@@ -129,7 +135,7 @@ export const MemoirCards: React.FC = () => {
                 <motion.div
                   animate={{ rotate: isExpanded ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-mahogany-900/90 border border-copper-400/30 flex items-center justify-center text-copper-300 shrink-0 mt-0.5 shadow-sm"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-obsidian-900/90 border border-violet-400/30 flex items-center justify-center text-lavender-300 shrink-0 mt-0.5 shadow-sm"
                 >
                   <ChevronDown className="w-3.5 h-3.5" />
                 </motion.div>
@@ -143,24 +149,24 @@ export const MemoirCards: React.FC = () => {
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="px-3.5 xs:px-4.5 sm:px-6 pb-4.5 sm:pb-6 pt-1 border-t border-crimson-500/20"
+                    className="px-3.5 xs:px-4.5 sm:px-6 pb-4.5 sm:pb-6 pt-1 border-t border-violet-500/20"
                   >
                     {/* Lead Paragraph */}
-                    <p className="font-garamond italic text-xs xs:text-sm sm:text-base text-copper-200/95 leading-relaxed mb-2.5 pt-1.5 sm:pt-3">
+                    <p className="font-garamond italic text-xs xs:text-sm sm:text-base text-lavender-300/95 leading-relaxed mb-2.5 pt-1.5 sm:pt-3">
                       "{memoir.leadParagraph}"
                     </p>
 
                     {/* Body */}
-                    <p className="font-sans text-xs sm:text-sm text-cream-200/90 leading-relaxed font-light mb-3.5">
+                    <p className="font-sans text-xs sm:text-sm text-pearl-200/90 leading-relaxed font-light mb-3.5">
                       {memoir.bodyParagraph}
                     </p>
 
-                    {/* Closing Line & Timestamp */}
-                    <div className="pt-2.5 border-t border-copper-500/15 flex items-center justify-between gap-2">
-                      <p className="font-script text-lg xs:text-xl sm:text-2xl text-crimson-300 leading-none">
+                    {/* Closing Line & Seal Date */}
+                    <div className="pt-2.5 border-t border-violet-500/15 flex items-center justify-between gap-2">
+                      <p className="font-script text-lg xs:text-xl sm:text-2xl text-violet-400 leading-none">
                         {memoir.closingLine}
                       </p>
-                      <span className="text-[8px] xs:text-[9px] font-mono text-copper-400 tracking-widest uppercase shrink-0">
+                      <span className="text-[8px] xs:text-[9px] font-mono text-gold-400 tracking-widest uppercase shrink-0">
                         {memoir.sealDate}
                       </span>
                     </div>

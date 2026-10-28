@@ -1,7 +1,7 @@
 import confetti from 'canvas-confetti';
 
-// Rich, warm celebratory palette (Deep Velvet Crimson, Brushed Copper, Amber Gold, Warm Cream Ivory, Terracotta)
-const LUXURY_PALETTE = ['#be123c', '#e11d48', '#e07a5f', '#f0a282', '#f59e0b', '#faf5ef', '#881337', '#c85a38'];
+// Semilore's celebration palette: Electric Violet, Soft Lavender, Champagne Gold, Pearl, Deep Violet
+const LUXURY_PALETTE = ['#a855f7', '#c084fc', '#7c3aed', '#f59e0b', '#fde047', '#fbbf24', '#e9d5ff', '#f8f8fc', '#6d28d9', '#fde68a'];
 
 /**
  * Fires a gentle ambient gold sparkle burst

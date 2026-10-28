@@ -5,47 +5,49 @@ import { HeroSection } from './components/HeroSection';
 import { MemoirCards } from './components/MemoirCards';
 import { InteractiveCandles } from './components/InteractiveCandles';
 import { WaxSealCelebration } from './components/WaxSealCelebration';
-import { DeborahHighlights } from './components/DeborahHighlights';
+import { SemiloreHighlights } from './components/SemiloreHighlights';
 import { BirthdayWishesCard, WishMessage } from './components/BirthdayWishesCard';
 import { WishModal } from './components/WishModal';
 import { EditorialClosing } from './components/EditorialClosing';
+import { VideoSection } from './components/VideoSection';
+import { PhotoGallery } from './components/PhotoGallery';
 
 const INITIAL_WISHES: WishMessage[] = [
   {
     id: 'wish-1',
-    sender: 'Your Number One Fan ❤️',
-    relationship: 'Forever Friends',
+    sender: 'Your Best Buddy',
+    relationship: 'Day-One Friend',
     message:
-      'To my darling Deborah, nwunye \'m—wishing you long life, vibrant health, peace of mind, and unstoppable elevation! You are truly one of one. Happy Birthday, fine girl!',
-    badge: '👑',
-    date: 'Sep 28, 2026',
-    likes: 48,
+      'Happy Birthday, Semilore! So proud of the person you are and how hard you work. Keep glowing, enjoy your special day, and know I am always in your corner!',
+    badge: 'Best Friend',
+    date: 'Oct 28, 2026',
+    likes: 65,
   },
   {
     id: 'wish-2',
-    sender: 'Your Special Circle',
-    relationship: 'Inner Circle',
+    sender: 'The Circle',
+    relationship: 'Good Friends',
     message:
-      'To the most stylish, intelligent, and genuinely sweet soul—may your new age overflow with immense joy, laughter, and divine open doors! Keep shining, Queen.',
-    badge: '🥂',
-    date: 'Sep 28, 2026',
-    likes: 39,
+      'To one of the sweetest and most dependable people around. Wishing you massive joy, good health, and zero stress this year!',
+    badge: 'Inner Circle',
+    date: 'Oct 28, 2026',
+    likes: 47,
   },
   {
     id: 'wish-3',
-    sender: 'Loved Ones & Family',
-    relationship: 'Home & Heart',
+    sender: 'Friends & Family',
+    relationship: 'Well Wishers',
     message:
-      'Happy Birthday Deborah! Watching your grace, quiet strength, and pure heart is an absolute joy. May God bless and protect you abundantly this year and always.',
-    badge: '✨',
-    date: 'Sep 28, 2026',
-    likes: 62,
+      'Happy Birthday Semilore! May your day be filled with laughter, love, and plenty of celebration. You deserve all the good things coming your way.',
+    badge: 'Celebration',
+    date: 'Oct 28, 2026',
+    likes: 78,
   },
 ];
 
 export const App: React.FC = () => {
   const [wishes, setWishes] = useState<WishMessage[]>(INITIAL_WISHES);
-  const [celebrationCount, setCelebrationCount] = useState(156);
+  const [celebrationCount, setCelebrationCount] = useState(203);
   const [isWishModalOpen, setIsWishModalOpen] = useState(false);
 
   const handleCelebrate = () => {
@@ -64,38 +66,45 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#140a08] text-[#faf5ef] selection:bg-[#be123c]/30 selection:text-[#f4c2ab] overflow-x-hidden">
+    <div className="relative min-h-[100dvh] w-full max-w-full bg-[#0B0D13] text-[#f8f8fc] selection:bg-[#a855f7]/30 selection:text-[#e9d5ff] overflow-x-hidden">
       {/* Dynamic Ambient Background Canvas & Glows */}
       <AmbientBackground />
 
-      {/* Floating Haute Couture Navigation */}
+      {/* Floating Navigation */}
       <Navigation
         onOpenWishModal={() => setIsWishModalOpen(true)}
         celebrationCount={celebrationCount}
       />
 
       {/* Main Experience Stream */}
-      <main className="relative z-10 max-w-xl mx-auto px-2 xs:px-3 sm:px-4 pb-[max(2rem,env(safe-area-inset-bottom))]">
-        {/* Phase 2: The Digital Tribute Hero Card with image1.png */}
+      <main className="relative z-10 w-full max-w-xl mx-auto px-2 xs:px-3 sm:px-4 pb-[max(2rem,env(safe-area-inset-bottom))]">
+
+        {/* Hero Card — Semilore Portrait Spotlight */}
         <HeroSection
           onCelebrate={handleCelebrate}
           celebrationCount={celebrationCount}
         />
 
-        {/* Phase 3: Interactive Memoir Folios ("Open When" Cards) */}
+        {/* Personal Memoir / Letter Folios */}
         <MemoirCards />
 
-        {/* Phase 3: Artisan Digital Wax Seal Grand Celebration */}
+        {/* Celebration Wax Seal */}
         <WaxSealCelebration
           onCelebrate={handleCelebrate}
           celebrationCount={celebrationCount}
         />
 
-        {/* Interactive Candle Blowing Ritual */}
+        {/* Photo Gallery Grid */}
+        <PhotoGallery />
+
+        {/* Moments & Vibes — Video Reel */}
+        <VideoSection />
+
+        {/* Interactive Birthday Candles */}
         <InteractiveCandles />
 
-        {/* Personal Tribute Cards */}
-        <DeborahHighlights />
+        {/* Why We Celebrate Semilore */}
+        <SemiloreHighlights />
 
         {/* Guestbook & Wishes Board */}
         <BirthdayWishesCard
@@ -104,7 +113,7 @@ export const App: React.FC = () => {
           onLikeWish={handleLikeWish}
         />
 
-        {/* Phase 4: Sent with Love Closing Section */}
+        {/* Sent with Love Closing Section */}
         <EditorialClosing />
       </main>
 
